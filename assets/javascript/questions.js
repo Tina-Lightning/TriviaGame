@@ -29,11 +29,11 @@
             {
                 question: "What housewife is frequently referred to as 'the Countess'?",
                 choices: ["Kim Zolciak", "Joanna Krupa", "LuAnn DeLesseps", "Nene Leakes"],
-                correctAnswer: "green"
+                correctAnswer: "LuAnn DeLesseps"
             },
             {
                 question: "Who is the FIRST person Bethenny orders to 'go to sleep' in one famous on-screen argument?",
-                choices: ["Jill Zarin", "Sonja Morgan", "Kelly Bensimon", "Alex VanKempen"],
+                choices: ["Jill Zarin", "Sonja Morgan", "Kelly Bensimon", "Alex McCord"],
                 correctAnswer: "Kelly Bensimon"
             },
             {
@@ -44,7 +44,12 @@
             {
                 question: "What franchise of the show introduced NeNe Leakes to the world?",
                 choices: ["Miami", "Atlanta", "D.C.", "Potomac"],
-                correctAnswer: "green"
+                correctAnswer: "Atlanta"
+            },
+            {
+                question: "What is the name of Dina Manzo's hairless cat?",
+                choices: ["Aunt Jemima", "Mr. Buttons", "Grandma Wrinkles", "Kitty Cat"],
+                correctAnswer: "Grandma Wrinkles"
             },
             {
                 question: "Which Atlanta housewife was confused about the operation of the Underground Railroad?",
@@ -62,6 +67,11 @@
                 correctAnswer: "Teresa Giudice"
             },
             {
+                question: "What is Ashley Darby's drink of choice?",
+                choices: ["Martini", "Corona", "Pinot Grigio", "Cosmo"],
+                correctAnswer: "Corona"
+            },
+            {
                 question: "Which member of the New Jersey cast got a spinoff show in 2014?",
                 choices: ["Teresa Giudice", "Melissa Gorga", "Caroline Manzo", "Dina Manzo"],
                 correctAnswer: "Caroline Manzo"
@@ -77,7 +87,7 @@
                 correctAnswer: "Beverly Hills"
             },
             {
-                question: "What country is past New York City's Alex McCord's husband from?",
+                question: "What country is New York City's Alex McCord's husband from?",
                 choices: ["England", "New Zealand", "Australia", "Denmark"],
                 correctAnswer: "Australia"
             },
@@ -107,14 +117,14 @@
                 correctAnswer: "eight"
             },
             {
-                question: "What color dress was Kelly wearing during her 'breakthrough' on Scary Island?",
+                question: "What did Teresa G. accuse her sister-in-law Melissa of?",
                 choices: ["being a stripper", "being a gold digger", "copying everything she does", "all of the above"],
                 correctAnswer: "all of the above"
             },
             {
-                question: "What did Teresa G. accuse her sister-in-law Melissa of?",
+                question: "What color dress was Kelly wearing during her 'breakthrough' on Scary Island?",
                 choices: ["red", "orange", "purple", "green"],
-                correctAnswer: "green"
+                correctAnswer: "purple"
             },
             {
                 question: "Many Housewives got their start modeling. Who didn't?",
@@ -130,11 +140,6 @@
                 question: "What location was chosen for the eighth incarnation of the series?",
                 choices: ["Potomac", "Seattle", "Miami", "Dallas"],
                 correctAnswer: "Potomac"
-            },
-            {
-                question: "What is Zolciak's spinoff show called?",
-                choices: ["Kim Rules", "Too Many Kids and Counting", "Don't Be Tardy", "Kim & Kroy"],
-                correctAnswer: "Don't Be Tardy"
             },
             {
                 question: "What location featured housewife Gretchen Rossi?",

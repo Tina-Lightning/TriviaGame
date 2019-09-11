@@ -1,0 +1,54 @@
+.choice {
+    border: 1px solid #DCDCDC;
+    padding: 10px;
+    background-color: white;
+    opacity: 0.75;
+
+}
+
+.choice:hover {
+    background-color: white;
+    opacity: 1;
+}
+
+body {
+    background-color: #00ABDD;
+    font-family: 'Montserrat', sans-serif;
+}
+.header {
+    padding: 40px 0;
+}
+h1 {
+    font-size: 400%;
+    color: black;
+}
+#start {
+    margin-top: 20px;
+}
+#timer {
+    font-size: 300%;
+    color: red;
+    margin: 40px 0 10px 0;
+}
+.quiz-box {
+    margin-bottom: 200px;
+}
+.quiz-quest {
+    margin-bottom:20px;
+}
+.correct {
+    font-size: 175%;
+    font-weight: bold;
+    color: green;
+}
+.incorrect {
+    font-size: 175%;
+    font-weight: bold;
+    color: red;
+}
+.witticism {
+    margin-top: 20px;
+}
+p {
+    font-size: 125%;
+}

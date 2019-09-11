@@ -8,7 +8,7 @@ var timer;
 // This function makes the timer count down
 function countDown() {
     counter--;
-    $("#timer").html("Timer: " + counter);
+    $("#timer").html("Time Left: " + counter);
     if (counter === 0) {
         timeUp();
     }
@@ -18,7 +18,7 @@ function countDown() {
 function timeUp() {
     clearInterval(timer);
     questionsWrong++;
-    preloadImage('wrong');
+    theAnswer('wrong');
     setTimeout(nextQuestion, 3 * 1000);
     //nextQuestion();
 }
@@ -51,9 +51,11 @@ function loadQuestion() {
     var question = quizQuestions[currentQuestion].question;
     var choices = quizQuestions[currentQuestion].choices;
 
-    $("#timer").html("Timer: " + counter);
+    $("#timer").html("Time Left: " + counter);
 
-    $("#game").html("<h3>" + question + "</h3>" + loadChoices(choices) + remainingQuestions());
+    $("#game").html("<h3 class='quiz-quest' >" + question + "</h3>" + loadChoices(choices) + remainingQuestions());
+
+    $( "#more-info" ).empty();
 
 };
 
@@ -83,24 +85,55 @@ $(document).on("click", ".choice", function () {
     if (selectedChoice === correctAnswer) {
         // player wins
         questionsRight++;
-        preloadImage('win');
+        theAnswer('win');
+        $( "#timer" ).empty();
         setTimeout(nextQuestion, 3 * 1000);
-        //nextQuestion();
     } else {
         // player loses
         questionsWrong++;
-        preloadImage('wrong');
+        theAnswer('wrong');
+        $( "#timer" ).empty();
         setTimeout(nextQuestion, 3 * 1000);
-        //nextQuestion();
     }
 
 });
 
 // At the end of the game, display the questions you got right and wrong
 function displayResults() {
-    var result = "<p>You got " + questionsRight + " question(s) right</p><p>You got " + questionsWrong + " question(s) wrong</p><p>Out of " + quizQuestions.length + " total questions</p><button class='btn btn-primary' id='reset'>Reset Game</button>";
+
+    var finalScore = (questionsRight/quizQuestions.length);
+    console.log(finalScore);
+
+    var imgResult = "";
+
+    if (0.9 < finalScore ) {
+        console.log("you got above 90%!");
+        imgResult = "<img class='img-fluid' src='assets/images/reaction-6.gif' /><p class='witticism'>You made it nice! You know your ladies - Andy Cohen would be impressed!<p>";
+    } else if ( 0.75 < finalScore  && finalScore < 0.90) {
+        console.log("you got between 75-90%");
+        imgResult = "<img class='img-fluid' src='assets/images/reaction-5.gif' /><p class='witticism'>Woohoo! Well done, you don't need Jesus to fix much!<p>";
+    } else if ( 0.60 < finalScore  && finalScore < 0.75) {
+        console.log("you got between 60-75%");
+        imgResult = "<img class='img-fluid' src='assets/images/reaction-4.gif' /><p class='witticism'>Well, someone might. You did okay, but there is room for improvement.<p>";
+    } else if ( 0.45 < finalScore  && finalScore < 0.60) {
+        console.log("you got between 45-60%");
+        imgResult = "<img class='img-fluid' src='assets/images/reaction-3.gif' /><p class='witticism'>It's hard to impress Heather and you definitely didn't today. You'll never score an invitation to her mansion now.<p>";
+    } else if ( 0.30 < finalScore  && finalScore < 0.45) {
+        console.log("you got between 30-45%");
+        imgResult = "<img class='img-fluid' src='assets/images/reaction-2.gif' /><p class='witticism'>Wow, Bethenny, wow, what a poor performance.<p>";
+    } else {
+        console.log("You got below 30%");
+        imgResult = "<img class='img-fluid' src='assets/images/reaction-1.gif' /><p class='witticism'>What Vicki said.<p>";
+    }
+
+    var result = "<p>You got " + questionsRight + " question(s) right out of " + quizQuestions.length + " total questions</p><button class='btn btn-warning btn-lg btn-block' id='reset'>Reset Game</button>";
 
     $("#game").html(result);
+
+    $( "#timer" ).empty();
+    //$( "#more-info" ).empty();
+    $("#more-info").html(imgResult);
+    
 }
 
 // When you click the reset button, the whole game starts over
@@ -117,43 +150,26 @@ $(document).on("click", "#reset", function () {
 
 // this function shows how many questions remain (this seems unnecessary and confusing, not sure if I'll keep it)
 function remainingQuestions() {
-    var remainingQuestions = quizQuestions.length - (currentQuestion + 1);
+    var questionUROn = currentQuestion + 1;
     var totalQuestions = quizQuestions.length;
 
-    return "<p>Questions left " + remainingQuestions + "<p></p>Total Questions " + totalQuestions + "</p>"
+    return "<p>Question " + questionUROn + " of " + totalQuestions + "</p>"
 
-}
-
-// These are arrays of images to display when you get a question right or wrong
-var positiveImages = [
-    'assets/images/funny.gif'
-    // Fill in more images later
-]
-var negativeImages = [
-    'assets/images/sad.gif'
-    // Fill in more images later
-]
-
-// Here we generate a random image from within the image arrays above
-function randomImage(imagesArr) {
-    var randomNum = Math.floor(Math.random() * imagesArr.length);
-    var randomImage = imagesArr[randomNum];
-    return randomImage;
 }
 
 // this is a function that loads the random image when you've selected an answer
-function preloadImage(status) {
+function theAnswer(status) {
 
     // create a variable with the correct answer inside of it, we'll use that below
     var correctAnswer = quizQuestions[currentQuestion].correctAnswer;
 
     // display the correct answer and a fun image if you get it right
     if (status === 'win') {
-        $("#game").html("<p class='preload-image'>You picked the right answer</p><p class='preload-image'>The correct answer is <strong>" + correctAnswer + "</strong><img src='" + randomImage(positiveImages) + "'/>");
+        $("#more-info").html("<p class='correct'>Correct!</p><p>The correct answer is " + correctAnswer + "</p>");
 
         // display the correct answer and a sad image if you get it wrong
     } else {
-        $("#game").html("<p class='preload-image'>You picked the wrong answer</p><p class='preload-image'>The correct answer is <strong>" + correctAnswer + "</strong><img src='" + randomImage(negativeImages) + "'/>");
+        $("#more-info").html("<p class='incorrect'>Wrong :(</p><p>The correct answer is " + correctAnswer + "</p>");
     }
 }
 
