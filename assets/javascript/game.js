@@ -68,16 +68,23 @@ function loadChoices(choices) {
         result += "<p class='choice' data-answer='" + choices[i] + "'>" + choices[i] + "</p>";
     }
     return result;
+
+    
 }
+
 
 // page is loaded dynamically, so we need to listen to the document
 // this is what happens when you click one of the choices
 $(document).on("click", ".choice", function () {
 
+    // This keeps the button from being chosen more than once, you get one selection!!
+    $(".choice").prop('disabled', true);
+
     clearInterval(timer);
 
     // when you click you collect the value of data-answer, one of them is correct
     var selectedChoice = $(this).attr("data-answer");
+
 
     // now we check if the selected answer equals the correct answer
     var correctAnswer = quizQuestions[currentQuestion].correctAnswer;
